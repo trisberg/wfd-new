@@ -1,0 +1,42 @@
+apiVersion: config-server.spring.tanzu.vmware.com/v1alpha1
+kind: ConfigServer
+metadata:
+  name: config-where-for-dinner
+  namespace: service-instances
+  labels:
+    services.apps.tanzu.vmware.com/class: config-where-for-dinner
+spec:
+  backends:
+  - git:
+      uri: https://github.com/trisberg/wfd-services-config
+      defaultLabel: main
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: config-server-app-operator-reader
+  labels:
+    servicebinding.io/controller: "true"
+rules:
+- apiGroups:
+  - config-server.spring.tanzu.vmware.com
+  resources:
+  - configservers
+  verbs:
+  - get
+  - list
+  - watch
+---
+apiVersion: services.apps.tanzu.vmware.com/v1alpha1
+kind: ClusterInstanceClass
+metadata:
+  name: config-where-for-dinner
+spec:
+  description:
+    short: Where For Dinner Config Server Instances
+  pool:
+    group: config-server.spring.tanzu.vmware.com
+    kind: ConfigServer
+    labelSelector:
+      matchLabels:
+        services.apps.tanzu.vmware.com/class: config-where-for-dinner

@@ -1,0 +1,10 @@
+apiVersion: services.apps.tanzu.vmware.com/v1alpha1
+kind: ClassClaim
+metadata:
+  name: db-where-for-dinner
+  namespace: default
+spec:
+  classRef:
+    name: mysql-unmanaged
+  parameters:
+    storageGB: 1

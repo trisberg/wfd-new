@@ -1,0 +1,41 @@
+apiVersion: service-registry.spring.apps.tanzu.vmware.com/v1alpha1
+kind: EurekaServer
+metadata:
+  name: registry-where-for-dinner
+  namespace: service-instances
+  labels:
+    services.apps.tanzu.vmware.com/class: registry-where-for-dinner
+spec:
+  replicas: 1
+  tls:
+    activated: true
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: eureka-app-operator-reader
+  labels:
+    servicebinding.io/controller: "true"
+rules:
+- apiGroups:
+  - service-registry.spring.apps.tanzu.vmware.com
+  resources:
+  - eurekaservers
+  verbs:
+  - get
+  - list
+  - watch
+---
+apiVersion: services.apps.tanzu.vmware.com/v1alpha1
+kind: ClusterInstanceClass
+metadata:
+  name: registry-where-for-dinner
+spec:
+  description:
+    short: Where For Dinner Registry Server Instances
+  pool:
+    group: service-registry.spring.apps.tanzu.vmware.com
+    kind: EurekaServer
+    labelSelector:
+      matchLabels:
+        services.apps.tanzu.vmware.com/class: registry-where-for-dinner

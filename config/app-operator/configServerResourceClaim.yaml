@@ -1,0 +1,20 @@
+apiVersion: services.apps.tanzu.vmware.com/v1alpha1
+kind: ResourceClaimPolicy
+metadata:
+  name: where-for-dinner-config-server-cross-namespace
+  namespace: service-instances
+spec:
+  consumingNamespaces:
+  - '*'
+  subject:
+    group: config-server.spring.tanzu.vmware.com
+    kind: ConfigServer
+---
+apiVersion: services.apps.tanzu.vmware.com/v1alpha1
+kind: ClassClaim
+metadata:
+  name: config-where-for-dinner
+  namespace: default
+spec:
+  classRef:
+    name: config-where-for-dinner

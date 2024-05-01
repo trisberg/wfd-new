@@ -1,0 +1,20 @@
+apiVersion: services.apps.tanzu.vmware.com/v1alpha1
+kind: ResourceClaimPolicy
+metadata:
+  name: where-for-dinner-registry-cross-namespace
+  namespace: service-instances
+spec:
+  consumingNamespaces:
+  - '*'
+  subject:
+    group: service-registry.spring.apps.tanzu.vmware.com
+    kind: EurekaServer
+---
+apiVersion: services.apps.tanzu.vmware.com/v1alpha1
+kind: ClassClaim
+metadata:
+  name: registry-where-for-dinner
+  namespace: default
+spec:
+  classRef:
+    name: registry-where-for-dinner
