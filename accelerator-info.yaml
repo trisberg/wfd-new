@@ -1,55 +1,44 @@
-id: 08d17f8e-2cca-4f13-acb0-541a96be3d2a
-timestamp: 2024-05-01T16:10:39.717Z
-source: INTELLIJ
+id: 64484527-cae1-4c88-bb36-244150ba1bff
+name: where-for-dinner
+timestamp: 2024-06-04T14:08:31.150258Z
+source: VSCODE
 username: risbergt
 options:
-  dynamicMsgBrokerClass: rabbitmq-unmanaged
-  dynamicCacheClass: redis-unmanaged
-  bsGitBranch: main
-  enableSpringCloudServices: true
-  dbName: db-where-for-dinner
-  dynamicMsgBroker: true
-  devDefaultAccountPassword: letseat
-  nativeBuild: false
-  gatewayType: ossscg
-  cacheName: cache-where-for-dinner
-  appSSOName: appsso-where-for-dinner
-  includeBuildToolWrapper: true
-  useCuratedAPIs: false
-  msgbrokerName: msgbroker-where-for-dinner
-  dynamicCache: false
-  dynamicDBClass: mysql-unmanaged
-  appWorkloadURL: http://where-for-dinner.apps.104.42.237.80.nip.io
-  cacheType: inmemCache
-  workloadType: web
-  ployglotWorkloads: false
-  devDefaultAccountUsername: thomas
-  gatewayName: gateway-where-for-dinner
-  bsGitRepository: github.com?owner=trisberg&repo=wfd-new
-  dbType: mysql
-  enableSecurity: true
-  numRabbitMQClusterNodes: 1
-  enableDefaultDevAccount: true
-  dynamicDatabase: true
-  serviceNamespace: service-instances
   projectName: wfd-new
   workloadNamespace: default
+  serviceNamespace: service-instances
+  workloadType: web
+  gatewayType: ossscg
+  gatewayName: gateway-where-for-dinner
+  useCuratedAPIs: false
   msgBrokerType: rabbitmq
+  dynamicMsgBroker: true
+  dynamicMsgBrokerClass: rabbitmq-unmanaged
+  msgbrokerName: msgbroker-where-for-dinner
+  numRabbitMQClusterNodes: 1
+  dbType: mysql
+  dynamicDatabase: true
+  dynamicDBClass: mysql-unmanaged
+  dbName: db-where-for-dinner
+  cacheType: inmemCache
+  dynamicCache: false
+  dynamicCacheClass: redis-unmanaged
+  cacheName: cache-where-for-dinner
+  enableSecurity: true
+  appSSOName: appsso-where-for-dinner
+  enableDefaultDevAccount: true
+  devDefaultAccountUsername: thomas
+  devDefaultAccountPassword: letseat
+  appWorkloadURL: http://where-for-dinner.apps.104.42.237.80.nip.io
+  ployglotWorkloads: false
+  nativeBuild: false
+  enableSpringCloudServices: true
   springCloudServices:
     enableRegistryService: true
+    registryName: registry-where-for-dinner
     enableSpringCloudConfig: true
     configServer:
+      configServiceName: config-where-for-dinner
       configRepoURL: https://github.com/trisberg/wfd-services-config
       configRepoLabel: main
-      configServiceName: config-where-for-dinner
-    registryName: registry-where-for-dinner
-accelerator:
-  name: where-for-dinner-new
-  git:
-    url: https://github.com/vmware-tanzu/application-accelerator-samples
-    subPath: where-for-dinner
-    ref: wfd-spring-cloud-services
-    commit: bc5ba89dbd8aa9a16260a5e5abbfdaa01cb94c31
-fragments:
-  - name: build-wrapper-maven
-  - name: tap-workload
+  includeBuildToolWrapper: true

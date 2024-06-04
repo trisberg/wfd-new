@@ -27,7 +27,7 @@ spec:
       cpu: "1500m"         
   source:
     git:
-      url: <https URL for your generated project's Git repository>
+      url: https://github.com/trisberg/wfd-new
       ref:
         branch: main
     subPath: where-for-dinner-ui

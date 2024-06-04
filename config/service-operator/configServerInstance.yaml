@@ -6,6 +6,8 @@ metadata:
   labels:
     services.apps.tanzu.vmware.com/class: config-where-for-dinner
 spec:
+  tls:
+    activated: true
   backends:
   - git:
       uri: https://github.com/trisberg/wfd-services-config
